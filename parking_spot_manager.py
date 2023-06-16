@@ -27,6 +27,22 @@ def print_spots(spots) :
     for parking_spots in spots :
         print(parking_spots)
 
+def filter_by_name(spots, name) : # name 키워드로 필터링
+    return [spot for spot in spots if name in spot.get('name')]
+
+def filter_by_city(spots, city) : # city 키워드로 필터링
+    return [spot for spot in spots if city in spot.get('city')]
+
+def filter_by_district(spots, district) : #district 키워드로 필터링
+    return [spot for spot in spots if district in spot.get('district')]
+
+def filter_by_ptype(spots, ptype) : #ptype 키워드로 필터링
+    return [spot for spot in spots if ptype in spot.get('ptype')]
+
+def filter_by_location(spots, locations) : #locations 키워드로 필터링
+    min_lat, max_lat, min_long, max_long = locations
+    return [spot for spot in spots if min_lat < float(spot.get('latitude')) < max_lat and min_long < float(spot.get('longitude')) < max_long] # 대소비교를 위해 float로 형변환
+
 # 각 단계별로 테스트 (테스트할때 주석해제 후 사용)
 if __name__ == '__main__':
     print("Testing the module...")

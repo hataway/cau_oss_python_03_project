@@ -21,29 +21,25 @@ def start_process(path):
             print("[4] ptype")
             print("[5] location")
             select = int(input('type:'))
-            if select == 1:
+            if select == 1: # name으로 필터링
                 keyword = input('type name:')
-                print("not implemented yet")
-                # fill this block
-            elif select == 2:
+                spots = parking_spot_manager.filter_by_name(spots, keyword)
+            elif select == 2: # city로 필터링
                 keyword = input('type city:')
-                print("not implemented yet")
-                # fill this block
-            elif select == 3:
+                spots = parking_spot_manager.filter_by_city(spots, keyword)
+            elif select == 3: # district로 필터링
                 keyword = input('type district:')
-                print("not implemented yet")
-                # fill this block
-            elif select == 4:
+                spots = parking_spot_manager.filter_by_district(spots, keyword)
+            elif select == 4: # ptype으로 필터링
                 keyword = input('type ptype:')
-                print("not implemented yet")
-                # fill this block
-            elif select == 5:
+                spots = parking_spot_manager.filter_by_ptype(spots, keyword)
+            elif select == 5: # locations으로 필터링
                 min_lat = float(input('type min lat:'))
                 max_lat = float(input('type max lat:'))
                 min_lon = float(input('type min long:'))
                 max_lon = float(input('type max long:'))
-                print("not implemented yet")
-                # fill this block
+                keyword = (min_lat,max_lat,min_lon,max_lon)
+                spots = parking_spot_manager.filter_by_location(spots, keyword)
             else:
                 print("invalid input")
         elif select == 3:
