@@ -43,6 +43,9 @@ def filter_by_location(spots, locations) : #locations 키워드로 필터링
     min_lat, max_lat, min_long, max_long = locations
     return [spot for spot in spots if min_lat < float(spot.get('latitude')) < max_lat and min_long < float(spot.get('longitude')) < max_long] # 대소비교를 위해 float로 형변환
 
+def sort_by_keyword(spots, keyword) : #keyword로 sort, sorted와 lambda 활용
+    return sorted(spots, key=lambda spot: spot.get(keyword))
+
 # 각 단계별로 테스트 (테스트할때 주석해제 후 사용)
 if __name__ == '__main__':
     print("Testing the module...")
